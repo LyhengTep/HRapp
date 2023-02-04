@@ -12,6 +12,7 @@ interface IAppText {
   bold?: boolean;
   white?: boolean;
   style?: TextStyle;
+  unimportant?: boolean;
 }
 export const AppText = ({
   children,
@@ -24,6 +25,7 @@ export const AppText = ({
   h6,
   bold,
   white,
+  unimportant,
 }: IAppText) => {
   return (
     <Text
@@ -37,6 +39,7 @@ export const AppText = ({
         h6 && styles.h6,
         white && styles.white,
         bold && styles.bold,
+        unimportant && styles.unimportant,
       ])}>
       {children}
     </Text>
@@ -67,5 +70,8 @@ const styles = StyleSheet.create({
   },
   white: {
     color: 'white',
+  },
+  unimportant: {
+    color: '#b5b4b3',
   },
 });

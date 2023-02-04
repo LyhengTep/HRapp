@@ -7,26 +7,30 @@ import Icon from '@components/Icon';
 import {bottomTabarIconHelper} from '@utils/index';
 import NotificationScreen from '@screens/Notification';
 import ProfileScreen from '@screens/Profile';
-import { IconSizes } from '@themes/size';
+import {IconSizes} from '@themes/size';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 const Tab = createBottomTabNavigator();
 export default function MainNavigation() {
   return (
-    <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={({route}) => ({
-          tabBarIcon: ({focused, color, size}) => {
-            let iconName = bottomTabarIconHelper(route.name, focused);
-            return <Icon name={iconName} color={color} size={IconSizes.md}/>;
-          },
-          tabBarActiveTintColor: 'tomato',
-          tabBarInactiveTintColor: 'gray',
-        })}>
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Activity" component={ActivityScreen} />
-        <Tab.Screen name="Notification" component={NotificationScreen} />
-        <Tab.Screen name="Profile" component={ProfileScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Tab.Navigator
+          screenOptions={({route}) => ({
+            tabBarIcon: ({focused, color, size}) => {
+              let iconName = bottomTabarIconHelper(route.name, focused);
+              return <Icon name={iconName} color={color} size={IconSizes.md} />;
+            },
+            tabBarActiveTintColor: 'tomato',
+            tabBarInactiveTintColor: 'gray',
+            headerShown: false,
+          })}>
+          <Tab.Screen name="Home" component={HomeScreen} />
+          <Tab.Screen name="Activity" component={ActivityScreen} />
+          <Tab.Screen name="Notification" component={NotificationScreen} />
+          <Tab.Screen name="Profile" component={ProfileScreen} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
