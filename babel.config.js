@@ -11,6 +11,7 @@ module.exports = {
           '^@routes/(.+)': './src/routes/\\1',
           '^@components/(.+)': './src/components/\\1',
           '^@utils/(.+)': './src/utils/\\1',
+          '^@themes/(.+)': './src/themes/\\1',
         },
       },
     ],
